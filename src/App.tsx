@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -23,29 +22,12 @@ type TextProps = {
   CustomComponent?: never;
 };
 
-type Person = {
-  firstName: string | null;
-  lastName: string | null;
-};
-
 type NotificationMessageProps = CustomComponentProps | TextProps;
 
 function NotificationMessage(notificationProps: NotificationMessageProps) {
-  const [personState, setPersonState] = useState<Person>({
-    firstName: "bob",
-  } as Person);
-
-  console.log(personState);
-
   if (notificationProps.CustomComponent) {
     return <notificationProps.CustomComponent />;
   }
 
-  const wholeName = personState.firstName + " " + personState.lastName;
-  return (
-    <div>
-      {notificationProps.text}
-      {wholeName}
-    </div>
-  );
+  return <div>{notificationProps.text}</div>;
 }
